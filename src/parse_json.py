@@ -78,6 +78,38 @@ def display_students(data):
 
     print("-" * 60)
 
+def displaysummary_report(data):
+    """
+    Displays a summary report of the enrollment data.
+    """
+
+    students = data["students"]
+
+    total_students = len(students)
+
+    average_units = sum(
+        calculate_total_units(student["courses"]) for student in students
+    ) / total_students
+
+    total_courses = sum(len(student["courses"]) for student in students)
+
+    print("SUMMARY REPORT")
+    print()
+    print(f"Total Students: {total_students}")
+    print(f"Average Units per Student: {average_units:.2f}")
+    print(f"Total Courses Offered: {total_courses}")
+    print()
+    print("BS Information Technology Students:")
+    for student in students:
+        if student["program"] == "BS Information Technology":
+            full_name = f"{student['first_name']} {student['last_name']}"
+            print(f"  - {full_name}")
+    print()
+    
+
+
+
+
 
 def main():
     """
@@ -89,6 +121,7 @@ def main():
     if data is not None:
         display_school_info(data)
         display_students(data)
+        displaysummary_report(data)
 
 
 if __name__ == "__main__":
