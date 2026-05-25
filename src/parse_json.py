@@ -101,7 +101,7 @@ def displaysummary_report(data):
     print()
     print("BS Information Technology Students:")
     for student in students:
-        if student["program"] == "BS Information Technology":
+        if student["program"].strip().lower() == "bs information technology":
             full_name = f"{student['first_name']} {student['last_name']}"
             print(f"  - {full_name}")
     print()
